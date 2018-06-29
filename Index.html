@@ -10,13 +10,10 @@
         version = "v1";
         $.ajax({
           method: "GET",
-          url: "https://api.propublica.org/congress/v1/statements/search.json?query=comey&offset=0",
-          dataType: "JSONP",
-          xhrFields: {
-            withCredentials: true
-          },
-          beforeSend: function(xhr){
-            xhr.setRequestHeader("X-API-Key: DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB");
+          url: "https://api.propublica.org/congress/v1/115/senate/members.json",
+          dataType: "JSON",
+          headers: {
+            "X-API-Key": "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB"
           },
           success: function(data){
             console.log(data);
@@ -25,6 +22,7 @@
       }
 
       $(document).ready(apiCall);
+      // API Docs https://projects.propublica.org/api-docs/congress-api/
     </script>
   </head>
   <body>
