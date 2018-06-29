@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script>
+      apiCall = function (){
+        version = "v1";
+        $.ajax({
+          method: "GET",
+          url: "https://api.propublica.org/congress/v1/statements/search.json?query=comey&offset=0",
+          dataType: "JSONP",
+          xhrFields: {
+            withCredentials: true
+          },
+          beforeSend: function(xhr){
+            xhr.setRequestHeader("X-API-Key: DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB");
+          },
+          success: function(data){
+            console.log(data);
+          }
+        })
+      }
+
+      $(document).ready(apiCall);
+    </script>
+  </head>
+  <body>
+    <h1>Poly Scite</h1>
+    <a href="Congress.html">Congress</a>
+  </body>
+</html>
