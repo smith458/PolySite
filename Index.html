@@ -5,23 +5,33 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script>
-      apiCall = function (){
-        version = "v1";
-        $.ajax({
-          method: "GET",
-          url: "https://api.propublica.org/congress/v1/115/senate/members.json",
-          dataType: "JSON",
-          headers: {
-            "X-API-Key": "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB"
-          },
-          success: function(data){
-            console.log(data);
-          }
-        })
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script>  
+      endpoints = {
+          senMembers : "/115/senate/members.json"
+        }
+
+      start = function (){
+        apiCall(endpoints.senMembers, console.log);
       }
 
-      $(document).ready(apiCall);
+      apiCall = function (endpoint, callback){
+        ver = "v2";
+        key = "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB";
+        $.ajax({
+          method: "GET",
+          url: "https://api.propublica.org/congress/"+ver+endpoint,
+          dataType: "JSON",
+          headers: {
+            "X-API-Key": key
+          },
+          success: function(data){
+            callback(data);
+          }
+        });
+      }
+
+      $(document).ready(start);
       // API Docs https://projects.propublica.org/api-docs/congress-api/
     </script>
   </head>
