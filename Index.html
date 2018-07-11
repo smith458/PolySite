@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PolyScite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script>  
-      endpoints = {
-          senMembers : "/115/senate/members.json"
-        }
+  <script>
+    var buildTable = function () {
+      var table = document.getElementById("A");
+      console.log(table);
+      var row = table.insertRow(0);
+      var cell = row.insertCell(0);
+      cell.innerHTML = "world";
+      var cell = row.insertCell(0);
+      cell.innerHTML = "hello";
+    };
+    
+    var Init = function () {
+      buildTable();
+    }
 
-      start = function (){
-        apiCall(endpoints.senMembers, console.log);
-      }
-
-      apiCall = function (endpoint, callback){
-        ver = "v2";
-        key = "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB";
-        $.ajax({
-          method: "GET",
-          url: "https://api.propublica.org/congress/"+ver+endpoint,
-          dataType: "JSON",
-          headers: {
-            "X-API-Key": key
-          },
-          success: function(data){
-            callback(data);
-          }
-        });
-      }
-
-      $(document).ready(start);
-      // API Docs https://projects.propublica.org/api-docs/congress-api/
-    </script>
-  </head>
-  <body>
-    <h1>Poly Scite</h1>
-    <a href="Congress.html">Congress</a>
-  </body>
+    $(document).ready(setTimeout(Init, 0));
+  </script>
+</head>
+<body>
+  <table id="A">
+    <thead>
+      <td>yes</td>
+      <td>no</td>
+    </thead>
+  </table>
+</body>
 </html>
