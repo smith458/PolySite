@@ -5,45 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PolyScite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-  <script>
-    var apiCall = function (endpoint, callback) {
-      var ver = "v2";
-      var key = "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB";
-      $.ajax({
-        method: "GET",
-        url: "https://api.propublica.org/congress/" + ver + endpoint,
-        dataType: "JSON",
-        headers: {
-          "X-API-Key": key
-        },
-        success: function (data) {
-          callback(data);
-        }
-      });
-    };
-
-    var buildTable = function (tableName, content) {
-      var table = document.getElementById(tableName);
-      var row = table.insertRow(0);
-      var cell = row.insertCell(0);
-      cell.innerHTML = "world";
-      var cell = row.insertCell(0);
-      cell.innerHTML = "hello";
-    };
-
-    var countCongressByParty = function(chamber){
-      
-    }
-  
-    var Init = function () {
-      buildTable("SenateByParty");
-    }
-
-    $(document).ready(setTimeout(Init, 0));
+  <script src="scripts/main.js">
   </script>
 </head>
 <body>

@@ -1,5 +1,3 @@
-import "/lib/lodash/core";
-
 var apiCall = function (endpoint, callback) {
   var ver = "v2";
   var key = "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB";
@@ -16,6 +14,12 @@ var apiCall = function (endpoint, callback) {
   });
 };
 
+var getPartyCounts = function(data) {
+    var totalParties = data.results[0].members.map(x => x.party);
+    var partyCount = _.countBy(totalParties);
+    console.log(partyCount);
+}
+
 var buildTable = function (tableName, content) {
     var table = document.getElementById(tableName);
     var row = table.insertRow(0);
@@ -27,6 +31,7 @@ var buildTable = function (tableName, content) {
   
   var Init = function () {
     buildTable("SenateByParty");
+    apiCall("/115/senate/members.json", getPartyCounts);
   }
 
   $(document).ready(setTimeout(Init, 0));
