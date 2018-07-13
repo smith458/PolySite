@@ -9,29 +9,43 @@ var apiCall = function (endpoint, callback) {
           "X-API-Key": key
       },
       success: function (data) {
+          console.log(data);
           callback(data);
       }
   });
 };
 
 var getPartyCounts = function(data) {
-    var totalParties = data.results[0].members.map(x => x.party);
-    var partyCount = _.countBy(totalParties);
-    console.log(partyCount);
+    var partiesByLetter = {
+        "R" : "Republican"
+        ,"D" : "Democrat"
+        ,"I" : "Independent"
+    }
+    var partiesOfMembers = data.results[0].members
+        .filter(m => m.in_office == true)
+        .map(x => partiesByLetter[x.party]);
+    return Object.values(partiesByLetter)
+        .map(x => [x, partiesOfMembers.filter(p => p == x).length]);
 }
 
 var buildTable = function (tableName, content) {
     var table = document.getElementById(tableName);
-    var row = table.insertRow(0);
-    var cell = row.insertCell(0);
-    cell.innerHTML = "world";
-    var cell = row.insertCell(0);
-    cell.innerHTML = "hello";
+    _.map(content, rows => {
+        var row = table.insertRow();
+        _.map(rows, column => {
+            var cell = row.insertCell();
+             cell.innerHTML = column;
+        });
+    });
+    
   };
   
+  var makeSenatePartyCountTable = (data) => buildTable("SenateByParty", getPartyCounts(data));
+  var makeHousePartyCountTable = (data) => buildTable("HouseByParty", getPartyCounts(data));
+
   var Init = function () {
-    buildTable("SenateByParty");
-    apiCall("/115/senate/members.json", getPartyCounts);
+    apiCall("/115/senate/members.json", makeSenatePartyCountTable);
+    apiCall("/115/house/members.json", makeHousePartyCountTable);
   }
 
   $(document).ready(setTimeout(Init, 0));
