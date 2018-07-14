@@ -29,13 +29,18 @@ var getMemberVotingStats = function(data) {
 var makeDetailTable = (data) => buildTable("Senators", getMemberDetails(data));
 var makeVotingStatsTable = (data) => buildTable("Senators", getMemberVotingStats(data));
 
-var Init = function() {
-  var infoType = "details";
+var makeSenateTable = function(infoType = "details"){
   var dataFuncByInfoType = {
     "details" : makeDetailTable,
     "votingStats" : makeVotingStatsTable
   }
   apiCall("/115/senate/members.json", dataFuncByInfoType[infoType]);
+}
+
+var changeTable = () => makeSenateTable("votingStats");
+
+var Init = function() {
+  makeSenateTable();
 }
 
 $(document).ready(setTimeout(Init, 0));

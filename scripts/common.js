@@ -1,5 +1,6 @@
 var buildTable = function (tableName, content) {
-  var table = document.getElementById(tableName);
+  $(`#${tableName} > tbody`).empty();
+  var table = document.getElementById(tableName).getElementsByTagName('tbody')[0];
   _.map(content, rows => {
       var row = table.insertRow();
       _.map(rows, column => {
