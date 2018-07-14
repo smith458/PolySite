@@ -9,6 +9,7 @@ var getMemberDetails = function(data) {
       , statesByAbbreviation[m.state]
       , moment().diff(m.date_of_birth, "years")
     ]);
+    details.unshift(["Name", "Party", "State", "Age"]);
   return details;
 }
 

@@ -1,14 +1,25 @@
-var buildTable = function (tableName, content) {
+var buildTable = function (tableName, content, hasHeader = true) {
+  var table = document.getElementById(tableName)
+  if (hasHeader){
+    $(`#${tableName} > thead`).empty();
+    var thead = table.getElementsByTagName('thead')[0];
+    addTableRow(thead, content[0]);
+    content.shift();
+  }
   $(`#${tableName} > tbody`).empty();
-  var table = document.getElementById(tableName).getElementsByTagName('tbody')[0];
+  var tbody = table.getElementsByTagName('tbody')[0];
   _.map(content, rows => {
-      var row = table.insertRow();
-      _.map(rows, column => {
-          var cell = row.insertCell();
-           cell.innerHTML = column;
-      });
+      addTableRow(tbody, rows);
   });
 };
+
+var addTableRow = function(table, content){
+  var row = table.insertRow();
+    _.map(content, column => {
+      var cell = row.insertCell();
+      cell.innerHTML = column;
+  });
+}
 
 var apiCall = function (endpoint, callback) {
   var ver = "v2";
