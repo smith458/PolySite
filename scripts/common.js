@@ -27,6 +27,11 @@ var apiCall = function (endpoint, callback) {
   });
 };
 
+var getDDValue = function(ddName){
+  var dd = document.getElementById(ddName);
+  return dd.options[dd.selectedIndex].text;
+}
+
 var partiesByLetter = {
   "R" : "Republican"
   ,"D" : "Democrat"
