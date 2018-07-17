@@ -11,27 +11,13 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
   <script src="scripts/common.js"></script>
-  <script src="scripts/senate.js"></script>
-  <script src="lib/moment/moment.js"></script>
+  <script src="scripts/member.js"></script>
 </head>
 <body>
-  <h1>Chambers of Congress</h1>
-  <h2>Senate</h2>
-  <p>The Senate has 100 members. The vote on stuff.</p>
-  <select name="TableType" id="TableType" onchange="makeSenateTable()"></select>
-  <div>
-    <h3>Senator Information</h3>
-    <table id="Senators">
-      <thead>
-        <tr>
-          <th>Member</th>
-          <th>Party</th>
-          <th>State</th>
-          <th>Age</th>
-        </tr> 
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+  <h1 id="name">Name</h1>
+  <h2>Bio</h2>
+  <p>This person!</p>
+  <p id="website">Site</p>
+  <img id="picture" src="" alt="hello"/>
 </body>
 </html>
