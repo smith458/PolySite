@@ -6,30 +6,21 @@
   <title>PolyScite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
   <script src="scripts/common.js"></script>
-  <script src="scripts/senate.js"></script>
+  <script src="scripts/chamber.js"></script>
   <script src="lib/moment/moment.js"></script>
 </head>
 <body>
-  <h1>Chambers of Congress</h1>
-  <h2>Senate</h2>
-  <p>The Senate has 100 members. The vote on stuff.</p>
-  <select name="TableType" id="TableType" onchange="makeSenateTable()"></select>
+  <h1 id="title">Chamber</h1>
+  <select name="TableType" id="TableType" onchange="makeChamberTable()"></select>
   <div>
     <h3>Senator Information</h3>
-    <table id="Senators">
-      <thead>
-        <tr>
-          <th>Member</th>
-          <th>Party</th>
-          <th>State</th>
-          <th>Age</th>
-        </tr> 
-      </thead>
+    <table id="Congressmen">
+      <thead></thead>
       <tbody></tbody>
     </table>
   </div>
