@@ -1,9 +1,3 @@
-// Gets parameters from Query String
-var getUrlParam = function(param){
-  var params = new URLSearchParams(window.location.search);
-  return params.get(param);
-}
-
 // Takes the members info and adds it to the page
 var buildMemberInfo = (id, data) => {
   var member = _.find(data.results[0].members,
@@ -23,4 +17,4 @@ var Init = function() {
   apiCall("/115/senate/members.json", buildThisMemberInfo);
 }
 
-$(document).ready(setTimeout(Init, 0));
+$(window).on("load", Init);

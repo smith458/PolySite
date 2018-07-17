@@ -14,4 +14,4 @@ var Init = function () {
   apiCall("/115/house/members.json", makeHousePartyCountTable);
 }
 
-$(document).ready(setTimeout(Init, 0));
+$(window).on("load", Init);

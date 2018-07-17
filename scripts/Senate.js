@@ -61,4 +61,4 @@ var Init = function() {
 
 }
 
-$(document).ready(setTimeout(Init, 0));
+$(window).on("load", Init);

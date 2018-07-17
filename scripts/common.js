@@ -38,9 +38,16 @@ var apiCall = function (endpoint, callback) {
   });
 };
 
+// Gets the current value from a dropdown
 var getDDValue = function(ddName){
   var dd = document.getElementById(ddName);
   return dd.options[dd.selectedIndex].text;
+}
+
+// Gets parameters from Query String
+var getUrlParam = function(param){
+  var params = new URLSearchParams(window.location.search);
+  return params.get(param);
 }
 
 var partiesByLetter = {
