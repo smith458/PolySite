@@ -14,7 +14,8 @@ var buildMemberInfo = (id, data) => {
 var Init = function() {
   var id = getUrlParam("id");
   var buildThisMemberInfo = _.partial(buildMemberInfo, id);
-  apiCall("/115/senate/members.json", buildThisMemberInfo);
+  var chamber = getUrlParam("chamber");
+  apiCall(`/115/${chamber}/members.json`, buildThisMemberInfo);
 }
 
 $(window).on("load", Init);

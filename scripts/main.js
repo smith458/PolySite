@@ -1,7 +1,7 @@
 var getPartyCounts = function(data) {
   var partiesOfMembers = data.results[0].members
     .filter(m => m.in_office == true)
-    .map(x => partiesByLetter[x.party]);
+    .map(x => letterToParty[x.party]);
   return Object.values(partiesByLetter)
     .map(x => [x, partiesOfMembers.filter(p => p == x).length]);
 }

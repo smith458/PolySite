@@ -1,17 +1,18 @@
 // Make linke to use for the name to take user to the member's page
-var makeNameLink = function(name, id) {
-  return `<a href="member.html?id=${id}">${name}</a>`
+var makeNameLink = function(name, id, chamber) {
+  return `<a href="member.html?id=${id}&chamber=${chamber}">${name}</a>`
 }
 
 // Functions to gather table data
 var getMemberDetails = function(data) {
+  var chamber = _.toLower(data.results[0].chamber)
   var members = data.results[0].members;
   var details = members
     .filter(m => m.in_office == true)
     .map(m => [
-      makeNameLink(m.name, m.votesmart_id)
-      , partiesByLetter[m.party]
-      , statesByAbbreviation[m.state]
+      makeNameLink(m.name, m.votesmart_id, chamber)
+      , letterToParty[m.party]
+      , abbreviationToState[m.state]
       , moment().diff(m.date_of_birth, "years")
     ]);
     // Add header
