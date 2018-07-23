@@ -9,6 +9,7 @@ var getMemberDetails = function(data) {
   var members = data.results[0].members;
   var details = members
     .filter(m => m.in_office == true)
+    .filter(m => m.title != "Delegate")
     .map(m => [
       makeNameLink(m.name, m.votesmart_id, chamber)
       , letterToParty[m.party]
@@ -21,11 +22,13 @@ var getMemberDetails = function(data) {
 }
 
 var getMemberVotingStats = function(data) {
+  var chamber = _.toLower(data.results[0].chamber)
   var members = data.results[0].members;
   var details = members
     .filter(m => m.in_office == true)
+    .filter(m => m.title != "Delegate")
     .map(m => [
-      makeNameLink(m.name, m.votesmart_id)
+      makeNameLink(m.name, m.votesmart_id, chamber)
       , m.party
       , m.dw_nominate
       , m.votes_with_party_pct
