@@ -2,8 +2,10 @@ var getPartyCounts = function(data) {
   var partiesOfMembers = data.results[0].members
     .filter(m => m.in_office == true)
     .map(x => letterToParty[x.party]);
-  return Object.values(letterToParty)
+  var countOfMembersByParty = Object.values(letterToParty)
     .map(x => [x, partiesOfMembers.filter(p => p == x).length]);
+  countOfMembersByParty.unshift(["Party", "Member Count"]);
+  return countOfMembersByParty;
 }
   
 var makeSenatePartyCountTable = (data) => buildTable("SenateByParty", getPartyCounts(data));
