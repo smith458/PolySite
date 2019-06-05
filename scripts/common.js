@@ -28,7 +28,7 @@ var addTableRow = function(table, content){
 
 // Makes API call to the given endpoint at propublica's congress API and then calls the call back on the data
 var apiCall = function (endpoint, callback) {
-  var ver = "v2";
+  var ver = "v1";
   var key = "DaqkLm8CokEuDVcBfQD9gszXbX5XAZ5sxY6ViWtB";
   $.ajax({
     method: "GET",
