@@ -12,8 +12,8 @@ var makeSenatePartyCountTable = (data) => buildTable("SenateByParty", getPartyCo
 var makeHousePartyCountTable = (data) => buildTable("HouseByParty", getPartyCounts(data));
 
 var Init = function () {
-  apiCall("/115/senate/members.json", makeSenatePartyCountTable);
-  apiCall("/115/house/members.json", makeHousePartyCountTable);
+  apiCall("/116/senate/members.json", makeSenatePartyCountTable);
+  apiCall("/116/house/members.json", makeHousePartyCountTable);
 }
 
 $(window).on("load", Init);
